@@ -23,7 +23,7 @@ if user_bet:
 finish_position = 220
 while is_race_on:
     for turtle in turtles:
-        random_distance = random.randint(0,10)
+        random_distance = random.randint(75,100)
         x_position = turtle.xcor() + random_distance
         if x_position > finish_position:
             x_position = finish_position
@@ -31,5 +31,15 @@ while is_race_on:
         turtle.goto(x_position, turtle.ycor())
         if not is_race_on:
             break
+
+turtle_color = ""
+for index in range(0, len(turtles)):
+    if turtles[index].xcor() == finish_position:
+        turtle_color = turtles[index].color()
+
+if turtle_color[0] == user_bet:
+    print(f"You've won! The {user_bet} finished first!")
+else:
+    print(f"You've lost! The {user_bet} didn't finish first!")
 
 screen.exitonclick()
